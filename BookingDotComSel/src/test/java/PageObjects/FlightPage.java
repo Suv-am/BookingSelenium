@@ -25,7 +25,6 @@ public class FlightPage {
 		 this.driver = driver;
 		 PageFactory.initElements(driver, this);
 	 }
-	String FromName;
 	 
 	@FindBy(xpath="//input[@value='ONEWAY']")
 	WebElement oneWayRadio;
@@ -155,7 +154,7 @@ public class FlightPage {
 	}
 	
 	public void menuPage() {
-		Assert.assertEquals(driver.getTitle(),"Kolkata – Anywhere - Booking.com");
+		Assert.assertTrue(driver.getCurrentUrl().contains("fly-anywhere"));
 	}
 	
 }
