@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -19,6 +20,10 @@ public class DriverSetup {
 		prop.load(ip);
 		String browser = prop.getProperty("browser");
 		if(browser.equalsIgnoreCase("chrome")) {
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("--disable-gpu");
+			options.addArguments("--window-size=1920,1080");
 			driver = new ChromeDriver();
 		}
 		else if(browser.equalsIgnoreCase("firefox")) {
