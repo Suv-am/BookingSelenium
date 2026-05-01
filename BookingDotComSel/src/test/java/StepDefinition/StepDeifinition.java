@@ -33,8 +33,8 @@ public class StepDeifinition {
 	@When("^with (\\d+) and (\\d+)$")
 	public void with_adult_and_child(int adult, int child) {
 		FlightPage fp = new FlightPage(driver);
-		fp.passengerSelection(adult,child);
 		Screenshots.takeScreenshot(driver);
+		fp.passengerSelection(adult,child);
 	}
 
 	@Then("User will be navigated to flight options page")
