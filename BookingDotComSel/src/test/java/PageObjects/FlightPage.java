@@ -25,7 +25,7 @@ public class FlightPage {
 		 this.driver = driver;
 		 PageFactory.initElements(driver, this);
 	 }
-	
+	String FromName;
 	 
 	@FindBy(xpath="//input[@value='ONEWAY']")
 	WebElement oneWayRadio;
@@ -82,6 +82,7 @@ public class FlightPage {
 		if((arvLocation.getText()).contains("Going to")) {
 			anywhereButton.click();
 		}
+		FromName =FromLoc.getText();
 		travelDate.click();
 		try {
 		FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config.properties");
@@ -156,7 +157,7 @@ public class FlightPage {
 	}
 	
 	public void menuPage() {
-		Assert.assertEquals(driver.getTitle(), FromLoc.getText()+" – Anywhere - Booking.com");
+		Assert.assertEquals(driver.getTitle(),FromName +" – Anywhere - Booking.com");
 	}
 	
 }
