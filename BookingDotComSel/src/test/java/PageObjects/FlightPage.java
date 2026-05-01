@@ -66,7 +66,8 @@ public class FlightPage {
 	WebElement occupancyDone;
 	@FindBy(xpath="//button[@data-ui-name='button_search_submit']")
 	WebElement submitSearchButton;
-	
+	@FindBy(xpath="//span[starts-with(@class,'Tags-module')]")
+	WebElement FromLoc;
 	
 	public void searchLocations(String departure, String arrival) {
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -155,7 +156,7 @@ public class FlightPage {
 	}
 	
 	public void menuPage() {
-		Assert.assertEquals(driver.getTitle(), "Kolkata – Anywhere - Booking.com");
+		Assert.assertEquals(driver.getTitle(), FromLoc.getText()+" – Anywhere - Booking.com");
 	}
 	
 }
