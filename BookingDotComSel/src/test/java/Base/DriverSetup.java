@@ -19,11 +19,11 @@ public class DriverSetup {
 		prop = new Properties();
 		prop.load(ip);
 		String browser = prop.getProperty("browser");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		options.addArguments("--disable-gpu");
+		options.addArguments("--window-size=1920,1080");
 		if(browser.equalsIgnoreCase("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless");
-			options.addArguments("--disable-gpu");
-			options.addArguments("--window-size=1920,1080");
 			driver = new ChromeDriver();
 		}
 		else if(browser.equalsIgnoreCase("firefox")) {
