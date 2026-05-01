@@ -76,13 +76,13 @@ public class FlightPage {
 		Select select = new Select(cabinClass);
 		select.selectByValue("BUSINESS");
 		fromLocation.click();
+		FromName =FromLoc.getText();
 		deptInputBox.sendKeys(departure,Keys.ENTER);
 		toLocation.click();
 		arInputBox.sendKeys(arrival,Keys.ENTER);
 		if((arvLocation.getText()).contains("Going to")) {
 			anywhereButton.click();
 		}
-		FromName =FromLoc.getText();
 		travelDate.click();
 		try {
 		FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config.properties");
