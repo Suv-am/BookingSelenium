@@ -21,12 +21,15 @@ public class DriverSetup {
 		prop = new Properties();
 		prop.load(ip);
 		String browser = prop.getProperty("browser");
+		String headless = System.getProperty("headless", "false");
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
+		if(headless.equalsIgnoreCase("true")) {
+		options.addArguments("--headless=new");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--window-size=1920,1080");
+		}
 		if(browser.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}
 		else if(browser.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
@@ -36,7 +39,7 @@ public class DriverSetup {
 		}
 		else {
 			System.out.println("Browser not found!! Running in Chrome");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}
 		}
 		catch(Exception e)
